@@ -1,6 +1,14 @@
-# Zuri Logistics Group — Digital Platform
+# Zuri Logistics Group – Dynamic Website
 
-A multilingual corporate website and business operations platform for Zuri Logistics Group.
+A multilingual corporate website and planned business operations platform for Zuri Logistics Group.
+
+## Website starter
+The first responsive website prototype is available in:
+- `index.html` — public homepage, company introduction, four divisions, partner network, portal previews and enquiry form.
+- `styles.css` — responsive visual design and layout.
+- `script.js` — mobile navigation, English/French text toggle, portal preview modals and email enquiry preparation.
+
+Open the site from GitHub: https://github.com/GaryHDSL/kin/blob/main/index.html
 
 ## Business divisions
 1. Logistics & Transport
@@ -8,32 +16,28 @@ A multilingual corporate website and business operations platform for Zuri Logis
 3. Agriculture & Farming
 4. Engineering & Industrial Services
 
-## Website
-- Primary domain: https://zurilogisticsgroup.co.za
-- Languages: English and French
-- Public-facing corporate pages with responsive layouts, animations, imagery, service information and enquiry forms.
+## Contact
+- Website: https://zurilogisticsgroup.co.za
+- ECU services: https://ecu.zurilogisticsgroup.co.za
+- Email: sales@zurilogisticsgroup.co.za
+- WhatsApp: +27 63 836 6355
 
-## Portals
+## Planned portals
 - **Admin:** manage users, partner approvals, divisions, contracts, quotations, invoices, staff, documents and reports.
-- **Client:** register, submit enquiries, request quotations, view invoices and documents, track jobs/deliveries and message the team.
+- **Client:** register, submit enquiries, request quotations, view invoices/documents, track jobs/deliveries and message the team.
 - **Partner:** register a business, submit verification documents, list services/products/equipment, respond to opportunities, submit proposals/quotes, manage availability and view assigned jobs/payment status.
 
-## Core platform capabilities
-- Central business database for companies, suppliers, customers, transporters, trucks/equipment, mining operations, farms, engineering firms, products/minerals, contracts, quotations and invoices.
-- Separate authenticated access and role-based permissions for administrators, clients and partners.
-- Approval workflow for partner registrations and uploaded documents.
-- Secure document storage and audit trails.
-- English/French content support.
-- Responsive dashboard and reporting.
+## Planned platform architecture
+- Frontend: Next.js / TypeScript (architecture to be finalised; current site is a static HTML/CSS/JS prototype).
+- Backend and data: PostgreSQL with Supabase.
+- Authentication: Supabase Auth with role-based access and row-level security.
+- Hosting: Cloudflare Pages or Vercel, subject to deployment requirements.
 
-## Suggested technical architecture
-- Frontend: Next.js / TypeScript
-- Backend and data: PostgreSQL with Supabase
-- Authentication: Supabase Auth with role-based access and row-level security
-- Hosting: Cloudflare Pages or Vercel, subject to deployment requirements
+## Important safeguards
+- Portal cards and dashboards are currently illustrative previews, not secure login systems.
+- The enquiry form opens a pre-filled email on the visitor's device; it does not save submissions to a server.
+- Do not place credentials, private customer data or confidential documents in this repository.
+- Marketing campaigns and customer messages must require explicit user approval before publishing or sending.
 
-## Important business rule
-The platform may prepare marketing campaigns, customer messages and social posts, but **must ask for the user's approval before publishing, contacting customers or sending messages**.
-
-## Project status
-This repository is the project workspace. This initial commit records the agreed project scope and proposed architecture; it is not yet the completed application. Implementation decisions and deployment configuration remain to be completed.
+## Project specification
+See [PROJECT_SPEC.md](PROJECT_SPEC.md) for the fuller functional requirements, initial data model, security considerations and implementation phases.
