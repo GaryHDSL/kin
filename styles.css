@@ -6,3 +6,7 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 .property-photo,.service-image,.panel-image{animation:cw-image-float 6s ease-in-out infinite}
 .inner-card img,.inner-two img{width:80%;max-width:80%;margin-left:auto;margin-right:auto}
 @media(prefers-reduced-motion:reduce){img,.property-photo,.service-image,.panel-image{animation:none!important}}
+
+
+/* Core Webber logo */
+.site-logo{display:block;width:auto;height:48px;max-width:180px;object-fit:contain;flex:0 0 auto}
