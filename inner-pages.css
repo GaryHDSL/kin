@@ -3,3 +3,6 @@
 /* Site-wide typography and image sizing */
 body{font-size:12px}
 img{max-width:70%;height:auto}
+
+/* Footer text colour */
+.inner-footer{color:#ff0000}.inner-footer a{color:#ff0000}.inner-footer a:hover{color:#cc0000}
