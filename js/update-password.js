@@ -1,0 +1,4 @@
+import { supabase, isSupabaseConfigured, showMessage } from './supabase.js';
+const form=document.getElementById('updatePasswordForm'), message=document.getElementById('message');
+if(!isSupabaseConfigured) showMessage(message,'Database setup is not complete. Configure Supabase first.','error');
+form.addEventListener('submit',async e=>{e.preventDefault();if(!isSupabaseConfigured)return;const password=new FormData(form).get('password');if(String(password).length<8){showMessage(message,'Use at least 8 characters.','error');return;}const {error}=await supabase.auth.updateUser({password});if(error){showMessage(message,error.message,'error');return;}showMessage(message,'Password updated. You can now sign in.','success');setTimeout(()=>window.location.href='client-login.html',1200);});
