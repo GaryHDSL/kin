@@ -1,0 +1,4 @@
+import { supabase, isSupabaseConfigured, showMessage } from './supabase.js';
+const form=document.getElementById('loginForm'), message=document.getElementById('message');
+if(!isSupabaseConfigured) showMessage(message,'Database setup is not complete yet. Add your Supabase project URL and anon key in js/supabase-config.js.','error');
+form.addEventListener('submit',async e=>{e.preventDefault();if(!isSupabaseConfigured)return;const data=new FormData(form);showMessage(message,'Signing in…');const {error}=await supabase.auth.signInWithPassword({email:data.get('email'),password:data.get('password')});if(error){showMessage(message,error.message,'error');return;}window.location.href='client-dashboard.html';});
