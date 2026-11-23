@@ -3,91 +3,92 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Core Webber provides property sales and rentals, home renovations, small construction, plumbing, painting, electrical work and building plans.">
-  <meta name="theme-color" content="#17251f">
-  <title>Core Webber | Property, Renovation & Construction</title>
+  <meta name="description" content="Search property for sale and rent with Core Webber. Discover homes, apartments and land, and request renovations or construction services.">
+  <meta name="theme-color" content="#153b32">
+  <title>Core Webber | Property for Sale & Rent, Renovations and Construction</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="property-portal.css">
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="#home" aria-label="Core Webber home"><span class="brand-mark">CW</span><span>CORE WEBBER<small>PROPERTY · RENOVATION · CONSTRUCTION</small></span></a>
-  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-  <nav class="main-nav" aria-label="Main navigation">
-    <a href="#home">HOME</a><a href="#services">SERVICES</a><a href="#properties">PROPERTIES</a><a href="#about">ABOUT</a><a href="client-login.html">CLIENT LOGIN</a><a href="#contact" class="nav-cta">GET A QUOTE</a>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-icon">CW</span><span>CORE WEBBER<small>PROPERTY · PROJECTS · CONSTRUCTION</small></span></a>
+  <button class="mobile-menu" aria-label="Open menu" aria-expanded="false">☰</button>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="#buy">BUY</a><a href="#rent">RENT</a><a href="#sell">SELL</a><a href="#services">RENOVATE & BUILD</a><a href="#about">ABOUT</a>
+    <a class="login-link" href="client-login.html">CLIENT LOGIN</a><a class="nav-button" href="client-register.html">CREATE ACCOUNT</a>
   </nav>
 </header>
+
 <main>
-<section class="hero" id="home">
-  <div class="hero-shade"></div>
-  <div class="hero-content">
-    <p class="eyebrow">PROPERTY · RENOVATION · BUILDING</p>
-    <h1>Make your property<br><em>work for you.</em></h1>
-    <p class="hero-copy">From finding the right property to improving the one you own, Core Webber brings property services and practical construction solutions together.</p>
-    <div class="hero-actions"><a class="btn btn-accent" href="#contact">Discuss your project <span>↗</span></a><a class="btn btn-outline" href="#services">Explore our services</a></div>
-  </div>
-  <div class="hero-caption"><span>SMART PROPERTY SOLUTIONS</span><span>SALES · RENTALS · RENOVATIONS · CONSTRUCTION</span></div>
-</section>
+  <section class="search-hero" id="buy">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">FIND YOUR NEXT PLACE WITH CORE WEBBER</p>
+      <h1>Find a property<br><span>to call your own.</span></h1>
+      <p class="hero-intro">Explore homes, apartments and land for sale or rent — then get help improving, renovating or building your property.</p>
+      <div class="search-panel">
+        <div class="search-tabs" role="tablist" aria-label="Property listing type">
+          <button class="search-tab active" type="button" data-listing="sale" role="tab" aria-selected="true">FOR SALE</button>
+          <button class="search-tab" type="button" data-listing="rent" role="tab" aria-selected="false">TO RENT</button>
+        </div>
+        <form class="property-search" id="propertySearch">
+          <label class="location-field"><span>LOCATION</span><input id="locationFilter" type="search" placeholder="Suburb, city or area"></label>
+          <label><span>PROPERTY TYPE</span><select id="typeFilter"><option value="">Any property type</option><option>House</option><option>Apartment</option><option>Townhouse</option><option>Vacant Land</option><option>Commercial</option></select></label>
+          <label><span>MIN PRICE</span><select id="minPrice"><option value="">No minimum</option><option value="500000">R500 000</option><option value="1000000">R1 000 000</option><option value="2000000">R2 000 000</option></select></label>
+          <label><span>MAX PRICE</span><select id="maxPrice"><option value="">No maximum</option><option value="1000000">R1 000 000</option><option value="2000000">R2 000 000</option><option value="5000000">R5 000 000</option><option value="10000000">R10 000 000</option></select></label>
+          <button class="search-submit" type="submit"><span>⌕</span> SEARCH</button>
+        </form>
+        <div class="advanced-row"><label><input type="checkbox" id="bedroomFilter"> 3+ bedrooms</label><label><input type="checkbox" id="gardenFilter"> Garden</label><a href="#listings" id="clearFilters">Clear filters</a></div>
+      </div>
+    </div>
+    <div class="hero-foot"><span>PROPERTY SEARCH · SOUTH AFRICA</span><span>BUY · RENT · SELL · IMPROVE</span></div>
+  </section>
 
-<section class="intro section" id="about">
-  <div class="section-label">01 / WHO WE ARE</div>
-  <div class="intro-copy"><h2>One team for your<br><em>property journey.</em></h2>
-    <p>Core Webber helps property owners, buyers, landlords and businesses take the next step with confidence. We bring together property sales and rental support, renovation services and small construction works under one roof.</p>
-    <p>Whether you are preparing a property for sale, refreshing a home, fixing essential services or planning an improvement, we help turn the brief into a clear project.</p>
-    <a class="text-link" href="#contact">Talk to our team <span>↗</span></a>
-  </div>
-</section>
+  <section class="content-section listing-section" id="listings">
+    <div class="section-head">
+      <div><p class="eyebrow dark">PROPERTY COLLECTION</p><h2>Explore properties</h2><p class="muted">Browse current listings or contact our team to help you find the right property.</p></div>
+      <a class="outline-link" href="client-register.html">Save searches & enquiries ↗</a>
+    </div>
+    <div class="listing-toolbar"><strong id="resultCount">Featured properties</strong><label>Sort by <select id="sortListings"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label></div>
+    <div class="property-grid" id="propertyGrid">
+      <article class="property-card" data-listing="sale" data-type="House" data-price="1850000" data-location="Kensington Johannesburg" data-bedrooms="3" data-garden="yes">
+        <div class="property-photo photo-one"><span class="listing-label">DEMO LISTING</span><button class="save-property" type="button" aria-label="Sign in to save property">♡</button></div>
+        <div class="property-info"><div class="price">R1 850 000</div><h3>Family home with garden</h3><p class="address">Kensington, Johannesburg</p><div class="features"><span>🛏 3 beds</span><span>🛁 2 baths</span><span>⌂ House</span></div><a href="client-login.html" class="card-link">ENQUIRE ABOUT THIS PROPERTY ↗</a></div>
+      </article>
+      <article class="property-card" data-listing="sale" data-type="Apartment" data-price="1250000" data-location="Bedfordview Johannesburg" data-bedrooms="2" data-garden="no">
+        <div class="property-photo photo-two"><span class="listing-label">DEMO LISTING</span><button class="save-property" type="button" aria-label="Sign in to save property">♡</button></div>
+        <div class="property-info"><div class="price">R1 250 000</div><h3>Modern apartment</h3><p class="address">Bedfordview, Johannesburg</p><div class="features"><span>🛏 2 beds</span><span>🛁 2 baths</span><span>⌂ Apartment</span></div><a href="client-login.html" class="card-link">ENQUIRE ABOUT THIS PROPERTY ↗</a></div>
+      </article>
+      <article class="property-card" data-listing="rent" data-type="Townhouse" data-price="12500" data-location="Edenvale Johannesburg" data-bedrooms="3" data-garden="yes">
+        <div class="property-photo photo-three"><span class="listing-label">DEMO LISTING</span><button class="save-property" type="button" aria-label="Sign in to save property">♡</button></div>
+        <div class="property-info"><div class="price">R12 500 <small>/ month</small></div><h3>Secure townhouse</h3><p class="address">Edenvale, Johannesburg</p><div class="features"><span>🛏 3 beds</span><span>🛁 2 baths</span><span>⌂ Townhouse</span></div><a href="client-login.html" class="card-link">ENQUIRE ABOUT THIS PROPERTY ↗</a></div>
+      </article>
+    </div>
+    <p class="demo-note"><strong>Design preview:</strong> These are illustrative demo cards, not verified properties available for sale or rent. Replace them with approved listings from the Core Webber database before launch.</p>
+    <div class="empty-state" id="emptyState" hidden>No demo properties match these filters. Try changing your search or contact our team.</div>
+  </section>
 
-<section class="services-section section" id="services">
-  <div class="section-heading"><div><div class="section-label">02 / WHAT WE DO</div><h2>Practical services.<br><em>Quality results.</em></h2></div><p>Flexible property and building services for homeowners, landlords, buyers and small businesses.</p></div>
-  <div class="service-grid">
-    <article class="service-card"><div class="service-image property-img"></div><div class="service-body"><span class="service-no">01</span><h3>Property sales & rentals</h3><p>Support with buying, selling and renting residential and commercial property.</p><a href="#contact">Enquire about property ↗</a></div></article>
-    <article class="service-card"><div class="service-image renovation-img"></div><div class="service-body"><span class="service-no">02</span><h3>Home renovations</h3><p>Interior upgrades, room improvements, repairs, modernisation and property makeovers.</p><a href="#contact">Plan a renovation ↗</a></div></article>
-    <article class="service-card"><div class="service-image construction-img"></div><div class="service-body"><span class="service-no">03</span><h3>Small construction</h3><p>Extensions, boundary walls, paving, ceilings, partitioning and general building works.</p><a href="#contact">Discuss construction ↗</a></div></article>
-    <article class="service-card"><div class="service-image plumbing-img"></div><div class="service-body"><span class="service-no">04</span><h3>Plumbing</h3><p>Repairs, installations, leak checks, taps, toilets, pipes and bathroom improvements.</p><a href="#contact">Request plumbing help ↗</a></div></article>
-    <article class="service-card"><div class="service-image painting-img"></div><div class="service-body"><span class="service-no">05</span><h3>Painting & finishing</h3><p>Interior and exterior painting, surface preparation, touch-ups and finishing work.</p><a href="#contact">Get a painting quote ↗</a></div></article>
-    <article class="service-card"><div class="service-image electrical-img"></div><div class="service-body"><span class="service-no">06</span><h3>Electrical services</h3><p>General electrical repairs, lighting, fittings and installation coordination with qualified professionals.</p><a href="#contact">Enquire about electrical work ↗</a></div></article>
-    <article class="service-card"><div class="service-image plans-img"></div><div class="service-body"><span class="service-no">07</span><h3>Building plans & drawings</h3><p>Building drawing and plan coordination to help you prepare your property project.</p><a href="#contact">Discuss your plans ↗</a></div></article>
-    <article class="service-card service-cta"><div class="cta-mark">CW</div><h3>Have a different project?</h3><p>Tell us what you need. We can discuss the scope and the right next step.</p><a class="btn btn-accent" href="#contact">Send an enquiry ↗</a></article>
-  </div>
-</section>
+  <section class="service-strip" id="services">
+    <div class="service-intro"><p class="eyebrow">MORE THAN PROPERTY SEARCH</p><h2>Own it.<br><span>Improve it.</span></h2><p>From the first viewing to the finishing touches, Core Webber can help with your property's next chapter.</p><a class="light-button" href="#contact">REQUEST A PROJECT QUOTE ↗</a></div>
+    <div class="service-list">
+      <a href="#contact"><span>01</span><div><h3>Property sales & rentals</h3><p>Buying, selling and rental enquiries.</p></div><b>↗</b></a>
+      <a href="#contact"><span>02</span><div><h3>Home renovations</h3><p>Modernisation, repairs and upgrades.</p></div><b>↗</b></a>
+      <a href="#contact"><span>03</span><div><h3>Small construction</h3><p>Extensions, walls, paving and building works.</p></div><b>↗</b></a>
+      <a href="#contact"><span>04</span><div><h3>Plumbing, painting & electrical</h3><p>Property maintenance and finishing services.</p></div><b>↗</b></a>
+      <a href="#contact"><span>05</span><div><h3>Building plans & drawings</h3><p>Planning and drawing coordination.</p></div><b>↗</b></a>
+    </div>
+  </section>
 
-<section class="property-section section" id="properties">
-  <div class="property-copy"><div class="section-label">03 / PROPERTY OPPORTUNITIES</div><h2>Find a place.<br><em>Unlock its potential.</em></h2><p>Looking to buy, sell or rent? Tell us what you are searching for, or ask us about preparing your property for the market.</p><div class="property-actions"><a class="btn btn-dark" href="#contact">I want to buy or rent</a><a class="text-link" href="#contact">I want to sell a property ↗</a></div></div>
-  <div class="property-panel"><div class="panel-image"></div><div class="panel-note"><span>PROPERTY SERVICES</span><strong>Sales · Rentals · Property preparation</strong><small>Contact us for current availability and listing enquiries.</small></div></div>
-</section>
+  <section class="content-section account-section" id="about">
+    <div><p class="eyebrow dark">YOUR PROPERTY SPACE</p><h2>Keep everything<br>in one place.</h2><p class="muted">Create a free client account to manage your property enquiries and keep track of renovation or construction requests.</p><a class="solid-link" href="client-register.html">CREATE YOUR ACCOUNT ↗</a></div>
+    <div class="account-features"><div><span>01</span><b>Save property interests</b><small>Keep a record of the properties you ask us about.</small></div><div><span>02</span><b>Track your enquiries</b><small>Review your submitted service and property requests.</small></div><div><span>03</span><b>View quotations & projects</b><small>Access available quotation and project updates securely.</small></div></div>
+  </section>
 
-<section class="process-section">
-  <div class="section section-heading"><div><div class="section-label">04 / HOW WE WORK</div><h2>From first conversation<br><em>to finished project.</em></h2></div><p>A straightforward process helps you understand the work, costs and next steps before a project begins.</p></div>
-  <div class="process-grid">
-    <div><span>01</span><h3>Tell us your plans</h3><p>Share the property, service or improvement you have in mind.</p></div>
-    <div><span>02</span><h3>Scope & assessment</h3><p>We discuss the requirements and arrange an assessment where needed.</p></div>
-    <div><span>03</span><h3>Quotation</h3><p>Review the proposed scope, pricing, materials and expected schedule.</p></div>
-    <div><span>04</span><h3>Get started</h3><p>Proceed once the scope and terms have been agreed.</p></div>
-  </div>
-</section>
-
-<section class="contact-section" id="contact">
-  <div class="contact-copy"><div class="section-label">05 / LET'S TALK</div><h2>Tell us what<br>you want to do.</h2><p>Buying, selling, renovating or building? Send us a project enquiry and we will help you identify the next step.</p>
-    <div class="contact-points"><div><span>01</span><p><b>Property</b><small>Sales, rentals and property enquiries</small></p></div><div><span>02</span><p><b>Renovation</b><small>Home improvements and repairs</small></p></div><div><span>03</span><p><b>Construction</b><small>Small building projects and plans</small></p></div></div>
-  </div>
-  <form class="contact-form" id="enquiryForm">
-    <h3>Request a call back</h3><p>Complete the details below to prepare your enquiry.</p>
-    <label>Your name<input name="name" required autocomplete="name" placeholder="Full name"></label>
-    <label>Phone number<input name="phone" required autocomplete="tel" placeholder="Your contact number"></label>
-    <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
-    <label>What do you need?
-      <select name="service" required><option value="">Choose a service</option><option>Property sales</option><option>Property rentals</option><option>Home renovation</option><option>Small construction</option><option>Plumbing</option><option>Painting</option><option>Electrical services</option><option>Building plans and drawings</option><option>Other</option></select>
-    </label>
-    <label>Project details<textarea name="message" rows="4" required placeholder="Tell us about the property and the work you need..."></textarea></label>
-    <button class="btn btn-accent" type="submit">Prepare enquiry ↗</button>
-    <div class="form-feedback" id="formFeedback" role="status" aria-live="polite">This website form is a front-end prototype. Connect the company email or enquiry system before publishing.</div>
-  </form>
-</section>
+  <section class="contact-band" id="contact"><div><p class="eyebrow">LET'S GET STARTED</p><h2>What can we help you find<br>or bring to life?</h2></div><div><p>Contact Core Webber for property enquiries, renovation assessments and small construction quotations.</p><a href="client-register.html" class="light-button">SEND AN ENQUIRY ↗</a></div></section>
 </main>
-<footer><a class="brand" href="#home"><span class="brand-mark">CW</span><span>CORE WEBBER<small>PROPERTY · RENOVATION · CONSTRUCTION</small></span></a><span>© <span id="year"></span> Core Webber. All rights reserved.</span><a href="#home">Back to top ↑</a></footer>
-<script src="script.js"></script>
+<footer class="footer"><a class="brand" href="index.html"><span class="brand-icon">CW</span><span>CORE WEBBER<small>PROPERTY · PROJECTS · CONSTRUCTION</small></span></a><span>© <span id="year"></span> Core Webber. All rights reserved.</span><div><a href="client-login.html">Client login</a><a href="client-register.html">Register</a></div></footer>
+<script type="module" src="js/property-search.js"></script>
 </body>
 </html>
