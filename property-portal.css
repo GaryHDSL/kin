@@ -6,3 +6,6 @@ img{max-width:70%;height:auto}
 
 /* Footer text colour */
 .footer{color:#ff0000}.footer a,.footer>div{color:#ff0000}.footer a:hover{color:#cc0000}
+
+/* Footer font size */
+.footer{font-size:25px}.footer a,.footer>div{font-size:25px}
