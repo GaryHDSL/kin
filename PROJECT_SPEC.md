@@ -1,101 +1,86 @@
-# Zuri Logistics Group Platform — Project Specification
+# Core Webber Property Portal — Project Specification
 
 ## 1. Purpose
-Build a modern corporate website and secure business platform for Zuri Logistics Group, connecting customers, verified partners and internal administrators across four business divisions.
+Build a South African property marketplace and home-improvement platform for Core Webber. The public site helps visitors search properties for sale or rent and request support with selling, renovations and small construction. Registered clients can securely manage enquiries and project information.
 
-## 2. Divisions and service catalogue
-- Logistics & Transport: freight, transport coordination, truck capacity, cross-border logistics and delivery operations.
-- Mining & Minerals: mining-sector services, minerals and commodities information, supplier and buyer enquiries.
-- Agriculture & Farming: agricultural services, products, suppliers and opportunities.
-- Engineering & Industrial Services: industrial services, equipment, engineering support, truck repairs and ECU diagnostics.
+## 2. Public website
+- Property search homepage with sale/rent tabs.
+- Search by suburb/city, property type, price range, bedrooms and features.
+- Property cards and detail pages with approved photos, prices, location and features.
+- Property sales and rental enquiries.
+- Service pages for renovations, small construction, plumbing, painting, electrical services, and building plans/drawings.
+- About, contact, privacy, terms and POPIA information pages.
+- Responsive desktop and mobile design, accessible navigation and search controls.
+- Search-engine-friendly titles, descriptions, sitemap and structured property data.
 
-Each division should have its own landing page, service/product catalogue, enquiry workflow and relevant partner listings.
+The design may take inspiration from familiar property marketplace patterns, but must use original Core Webber branding, copy, layouts and imagery.
 
-## 3. Public website
-- Home, About, Divisions, individual division pages, Services, Partners, Opportunities, News/Insights, Contact and legal/privacy pages.
-- Modern corporate visual design, responsive mobile/desktop layouts, animation used without harming accessibility or performance.
-- English/French language support.
-- Search-engine-friendly metadata, sitemap, structured content and accessible navigation.
-- Contact and enquiry forms with spam protection.
+## 3. User roles and portals
 
-## 4. User roles and portals
+### Public visitor
+- Search published listings.
+- View public property information.
+- Submit an enquiry or register for an account.
 
-### Admin portal
-- Dashboard with enquiries, active jobs, partner applications and outstanding quotations/invoices.
-- Manage users, roles, business divisions, clients, partners, staff and company records.
-- Review and approve/reject partner applications and compliance documents.
-- Manage contracts, quotations, invoices, jobs, delivery records and uploaded documents.
-- Reporting, audit history and platform settings.
+### Client
+- Register, sign in and reset password securely.
+- Manage own name and contact details.
+- Submit property, renovation and construction enquiries.
+- View own enquiries, quotations, projects and permitted documents.
+- Save property searches/favourites (future enhancement).
 
-### Client portal
-- Account registration and secure login.
-- Company profile and contact management.
-- Submit service enquiries and request quotations.
-- View quotation and invoice status; download permitted documents.
-- Track assigned jobs/deliveries and communicate with the team.
+### Admin/staff
+- Create, edit, publish, unpublish and archive property listings.
+- Upload and manage property images.
+- Manage client enquiries and lead status.
+- Prepare quotations and update project milestones.
+- Manage users and staff permissions.
+- Review activity and audit administrative changes.
 
-### Partner portal
-- Business registration and profile.
-- Upload company, identity, vehicle, insurance, licence and compliance documents as applicable.
-- Admin verification and approval before appearing as a verified partner.
-- List services, products, minerals, equipment, vehicles and capacity.
-- View opportunities and submit proposals/quotations.
-- Manage availability, assigned jobs, document status and payment status.
-- Secure messaging with authorised users.
+Admin screens and secure staff write workflows remain to be implemented. Never grant admin privileges from browser-side code.
 
-## 5. Data model (initial)
-Proposed entities:
-- users, roles, user_profiles
-- companies, clients, partners, partner_verifications
-- divisions, services, products, minerals
-- suppliers, transporters, vehicles, equipment, farms, mining_operations
-- enquiries, opportunities, proposals
-- quotations, quotation_items, contracts
-- jobs, deliveries, tracking_events
-- invoices, invoice_items, payments
-- documents, messages, notifications
-- audit_logs
+## 4. Database
+Supabase PostgreSQL and Supabase Auth are the selected backend.
 
-Use relational constraints, timestamps, ownership fields and soft deletion where appropriate. Define retention and access rules before production.
+Initial entities:
+- profiles
+- properties
+- enquiries
+- quotations
+- projects
+- documents
 
-## 6. Security and governance
-- Enforce least-privilege role-based access.
-- Use PostgreSQL row-level security for tenant and role isolation.
-- Keep secrets and API keys out of source control; use environment variables.
-- Validate and scan uploaded files; restrict file type and size.
-- Log sensitive administrative actions.
-- Require explicit admin approval for partner verification.
-- Back up the database and test restoration.
-- Apply privacy, POPIA and any applicable cross-border data requirements before launch.
+Property records include listing type (sale/rent), type, price/currency, address, suburb, city, bedrooms, bathrooms, parking, floor/erf size, features, status and image URLs.
 
-## 7. Marketing and customer-contact approval
-The system can draft campaign ideas, social posts, email and WhatsApp messages, and follow-up recommendations. It must not publish, send, or contact customers automatically without an explicit approval action from an authorised Zuri user. Record the approver, content and timestamp.
+## 5. Security and privacy
+- Supabase Auth handles passwords; never store raw passwords.
+- Enable PostgreSQL Row Level Security on all client-related tables.
+- Public visitors may read only published property listings.
+- Clients may read only their own profile, enquiries, quotations, projects and document metadata.
+- Staff writes must use trusted server-side or administrator workflows.
+- Keep secret/service-role keys out of browser code and source control.
+- Validate and restrict uploads; keep private documents in protected storage.
+- Apply POPIA, consent, retention and privacy requirements before collecting real customer data.
+- Use HTTPS in production and test account recovery, permissions and backups.
 
-## 8. Suggested implementation phases
-1. Confirm requirements, brand assets, domain and hosting.
-2. Create Next.js application structure and design system.
-3. Configure Supabase project, schema, authentication and row-level security.
-4. Build public website and bilingual content.
-5. Build admin, client and partner portals.
-6. Implement enquiries, partner verification, quotations, contracts, jobs, invoices and documents.
-7. Add notifications, messaging, reporting and approval-gated marketing workflows.
-8. Test security, permissions, accessibility, performance and backups.
-9. Deploy to staging, obtain business acceptance, then deploy production.
+## 6. Development phases
+1. Confirm brand identity, domain, contact information and service coverage.
+2. Finalise public marketplace design and responsive layouts.
+3. Create and configure Supabase project and apply SQL migration.
+4. Connect authentication and test registration/login/password reset.
+5. Connect public property search to published database listings.
+6. Build property detail pages and enquiry workflows.
+7. Build admin listing management and image storage.
+8. Complete client dashboard, quotation and project workflows.
+9. Test security, accessibility, performance, SEO and backup/restore.
+10. Deploy to staging, obtain acceptance and deploy production.
 
-## 9. Open decisions before production
-- Final brand kit, logo, colours and photography.
-- Final list of services and division-specific workflows.
-- Hosting provider and production database region.
-- Partner onboarding and verification checklist.
-- Payment gateway and accounting/invoicing requirements.
-- Tracking integrations and messaging providers.
-- Data retention, privacy notices and user consent requirements.
-- Which pages and directories are public versus login-only.
-
-## 10. Initial project contact details
-- Website: https://zurilogisticsgroup.co.za
-- ECU services website: https://ecu.zurilogisticsgroup.co.za
-- Business email: sales@zurilogisticsgroup.co.za
-- WhatsApp: +27 63 836 6355
-
-These are project contact details only. Do not place credentials, private customer data or confidential documents in this repository.
+## 7. Launch decisions
+- Final logo, brand colours and approved property photography.
+- Property listing regions and listing verification process.
+- Business contact email and phone/WhatsApp.
+- Production domain and hosting.
+- Supabase project URL, public key, email/SMTP configuration and database region.
+- Admin users and approval workflow.
+- Privacy notice, POPIA processes and document retention.
+- Any payment gateway or third-party property listing integrations.
