@@ -9,3 +9,6 @@ img{max-width:70%;height:auto}
 
 /* Footer font size */
 .footer{font-size:25px}.footer a,.footer>div{font-size:25px}
+
+/* Footer font size override */
+.footer{font-size:15px}.footer a,.footer>div{font-size:15px}
