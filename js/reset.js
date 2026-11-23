@@ -1,0 +1,4 @@
+import { supabase, isSupabaseConfigured, showMessage } from './supabase.js';
+const form=document.getElementById('resetForm'), message=document.getElementById('message');
+if(!isSupabaseConfigured) showMessage(message,'Database setup is not complete. Configure Supabase first.','error');
+form.addEventListener('submit',async e=>{e.preventDefault();if(!isSupabaseConfigured)return;showMessage(message,'Requesting reset link…');const {error}=await supabase.auth.resetPasswordForEmail(new FormData(form).get('email'),{redirectTo:window.location.origin+'/update-password.html'});if(error){showMessage(message,error.message,'error');return;}showMessage(message,'If that email is registered, a password reset link will be sent.','success');form.reset();});
