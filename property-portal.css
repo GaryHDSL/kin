@@ -10,3 +10,14 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 
 /* Core Webber logo */
 .site-logo{display:block;width:auto;height:48px;max-width:180px;object-fit:contain;flex:0 0 auto}
+
+
+/* Animated property visuals: subtle GIF-style movement and soft light pulses */
+@keyframes cw-photo-motion{0%,100%{filter:brightness(1) saturate(1);transform:scale(1)}50%{filter:brightness(1.12) saturate(1.08);transform:scale(1.035)}}
+@keyframes cw-photo-glow{0%,100%{box-shadow:0 0 0 rgba(35,143,199,0)}50%{box-shadow:0 0 22px rgba(35,143,199,.32)}}
+.property-photo{position:relative;overflow:hidden;animation:cw-photo-glow 4.5s ease-in-out infinite}
+.property-photo:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.28) 48%,transparent 68%);transform:translateX(-120%);animation:cw-light-sweep 7s ease-in-out infinite}
+@keyframes cw-light-sweep{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+.property-card{transition:transform .35s ease,box-shadow .35s ease}
+.property-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(15,45,65,.13)}
+@media(prefers-reduced-motion:reduce){.property-photo,.property-photo:after,.property-card{animation:none!important;transition:none!important}.property-card:hover{transform:none}}
