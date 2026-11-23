@@ -26,3 +26,10 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 .inner-two>.inner-video{height:380px!important}
 .inner-card video{width:100%;height:240px;object-fit:cover}
 @media(max-width:650px){.inner-two>.inner-video{height:260px!important}}
+
+
+/* Moving video backgrounds for inner-page hero banners */
+.inner-hero{position:relative;isolation:isolate;overflow:hidden;background:none!important}
+.inner-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,61,91,.91),rgba(23,101,140,.72));z-index:0;pointer-events:none}
+.inner-hero>div{position:relative;z-index:2}
+.inner-hero .page-hero-video{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;z-index:-1}
