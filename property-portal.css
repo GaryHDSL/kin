@@ -10,3 +10,6 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 
 /* Core Webber logo */
 .site-logo{display:block;width:auto;height:48px;max-width:180px;object-fit:contain;flex:0 0 auto}
+
+/* Copyright text colour */
+.footer>span{color:#ffffff}
