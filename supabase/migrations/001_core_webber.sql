@@ -22,26 +22,17 @@ create trigger profiles_set_updated_at before update on public.profiles
 for each row execute function public.set_updated_at();
 
 create or replace function public.handle_new_user()
-returns trigger
-language plpgsql
-security definer
-set search_path = ''
-as $$
+returns trigger language plpgsql security definer set search_path = '' as $$
 begin
   insert into public.profiles (id, full_name, phone)
-  values (
-    new.id,
-    coalesce(new.raw_user_meta_data ->> 'full_name', ''),
-    coalesce(new.raw_user_meta_data ->> 'phone', '')
-  )
+  values (new.id, coalesce(new.raw_user_meta_data ->> 'full_name', ''), coalesce(new.raw_user_meta_data ->> 'phone', ''))
   on conflict (id) do nothing;
   return new;
 end;
 $$;
 
 drop trigger if exists on_auth_user_created on auth.users;
-create trigger on_auth_user_created
-after insert on auth.users
+create trigger on_auth_user_created after insert on auth.users
 for each row execute procedure public.handle_new_user();
 
 create table if not exists public.properties (
@@ -57,11 +48,21 @@ create table if not exists public.properties (
   city text,
   bedrooms integer,
   bathrooms numeric(3,1),
+  parking_spaces integer,
+  floor_size numeric(12,2),
+  erf_size numeric(12,2),
+  features text[] not null default '{}',
   status text not null default 'draft' check (status in ('draft','published','under_offer','rented','sold','archived')),
   image_urls text[] not null default '{}',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Safe additions for projects that ran an earlier version of this migration.
+alter table public.properties add column if not exists parking_spaces integer;
+alter table public.properties add column if not exists floor_size numeric(12,2);
+alter table public.properties add column if not exists erf_size numeric(12,2);
+alter table public.properties add column if not exists features text[] not null default '{}';
 
 create table if not exists public.enquiries (
   id uuid primary key default gen_random_uuid(),
@@ -125,7 +126,6 @@ alter table public.quotations enable row level security;
 alter table public.projects enable row level security;
 alter table public.documents enable row level security;
 
--- Profiles: clients can see and edit their own contact profile, never their role.
 drop policy if exists "Clients read own profile" on public.profiles;
 create policy "Clients read own profile" on public.profiles for select to authenticated using (id = (select auth.uid()));
 drop policy if exists "Clients update own profile" on public.profiles;
@@ -133,17 +133,14 @@ create policy "Clients update own profile" on public.profiles for update to auth
 revoke update on public.profiles from authenticated;
 grant update (full_name, phone) on public.profiles to authenticated;
 
--- Published listings are public; unpublished records are not exposed to visitors.
 drop policy if exists "Public read published properties" on public.properties;
 create policy "Public read published properties" on public.properties for select to anon, authenticated using (status = 'published');
 
--- Clients may create and read only their own enquiries.
 drop policy if exists "Clients read own enquiries" on public.enquiries;
 create policy "Clients read own enquiries" on public.enquiries for select to authenticated using (client_id = (select auth.uid()));
 drop policy if exists "Clients create own enquiries" on public.enquiries;
 create policy "Clients create own enquiries" on public.enquiries for insert to authenticated with check (client_id = (select auth.uid()));
 
--- Clients can read their own quotations, projects and document metadata.
 drop policy if exists "Clients read own quotations" on public.quotations;
 create policy "Clients read own quotations" on public.quotations for select to authenticated using (client_id = (select auth.uid()));
 drop policy if exists "Clients read own projects" on public.projects;
@@ -153,7 +150,7 @@ create policy "Clients read own document metadata" on public.documents for selec
 
 -- No client-facing insert/update/delete policies for staff-managed records.
 -- Assign admin/staff roles only through the trusted Supabase SQL editor or a protected server process.
--- Do not expose the service_role key in browser code.
+-- Never expose the service_role key in browser code.
 
 grant select on public.profiles, public.properties, public.enquiries, public.quotations, public.projects, public.documents to authenticated;
 grant select on public.properties to anon;
