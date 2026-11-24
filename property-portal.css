@@ -149,3 +149,52 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
     align-self:flex-start;
   }
 }
+
+
+/* Ultra-slim, clearly distinct account navigation actions */
+.nav-links .login-link{
+  min-height:0;
+  padding:5px 7px;
+  border:0;
+  border-bottom:1px solid #238fc7;
+  border-radius:0;
+  background:transparent;
+  color:#17658c;
+  box-shadow:none;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+.nav-links .login-link:hover{
+  background:transparent;
+  border-color:#123d5b;
+  color:#123d5b;
+}
+.nav-links .nav-button{
+  min-height:0;
+  padding:6px 11px;
+  border:1px solid #238fc7;
+  border-radius:2px;
+  background:#238fc7;
+  color:#fff;
+  box-shadow:none;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+.nav-links .nav-button:hover{
+  background:#123d5b;
+  border-color:#123d5b;
+  color:#fff;
+  box-shadow:none;
+  transform:none;
+}
+@media(max-width:780px){
+  .nav-links .login-link,
+  .nav-links .nav-button{
+    min-height:0;
+    width:fit-content;
+    padding:7px 10px;
+    align-self:flex-start;
+  }
+}
