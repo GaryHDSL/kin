@@ -198,3 +198,7 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
     align-self:flex-start;
   }
 }
+
+
+/* Center the contact-band headline */
+.contact-band h2{text-align:center;}
