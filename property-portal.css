@@ -81,3 +81,12 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
     align-self:flex-start;
   }
 }
+
+
+/* KIN site-wide service marquee above the navigation */
+.kin-marquee{height:34px;display:flex;align-items:center;overflow:hidden;background:#123d5b;color:#fff;border-bottom:2px solid #8ed8f5;position:relative;z-index:40;white-space:nowrap}
+.kin-marquee-track{display:flex;align-items:center;gap:22px;width:max-content;min-width:max-content;padding-left:22px;animation:kin-marquee-scroll 42s linear infinite;font:800 10px/1 Arial,Helvetica,sans-serif;letter-spacing:1.35px}
+.kin-marquee-track i{font-style:normal;color:#8ed8f5;font-size:14px}
+@keyframes kin-marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.kin-marquee:hover .kin-marquee-track{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.kin-marquee-track{animation:none!important;justify-content:center;flex-wrap:wrap;white-space:normal}.kin-marquee{height:auto;min-height:34px;padding:7px 10px}}
