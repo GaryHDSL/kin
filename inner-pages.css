@@ -10,3 +10,43 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 
 /* Core Webber logo */
 .site-logo{display:block;width:auto;height:48px;max-width:180px;object-fit:contain;flex:0 0 auto}
+
+
+/* Animated service and listing photographs: gentle GIF-style motion */
+@keyframes cw-inner-photo-motion{0%,100%{filter:brightness(1) saturate(1);transform:scale(1)}50%{filter:brightness(1.1) saturate(1.08);transform:scale(1.035)}}
+@keyframes cw-inner-card-glow{0%,100%{box-shadow:0 0 0 rgba(35,143,199,0)}50%{box-shadow:0 8px 25px rgba(35,143,199,.18)}}
+.inner-card{overflow:hidden;animation:cw-inner-card-glow 5s ease-in-out infinite}
+.inner-card img,.inner-two img{animation:cw-inner-photo-motion 7s ease-in-out infinite;transform-origin:center}
+.inner-card:hover img,.inner-two img:hover{filter:brightness(1.08) saturate(1.1)}
+@media(prefers-reduced-motion:reduce){.inner-card,.inner-card img,.inner-two img{animation:none!important;transition:none!important}}
+
+
+/* Stock video presentation */
+.inner-video{display:block!important;width:100%!important;max-width:100%!important;height:240px!important;margin:0!important;object-fit:cover;background:#dce8ee}
+.inner-two>.inner-video{height:380px!important}
+.inner-card video{width:100%;height:240px;object-fit:cover}
+@media(max-width:650px){.inner-two>.inner-video{height:260px!important}}
+
+
+/* Moving video backgrounds for inner-page hero banners */
+.inner-hero{position:relative;isolation:isolate;overflow:hidden;background:none!important}
+.inner-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,61,91,.91),rgba(23,101,140,.72));z-index:0;pointer-events:none}
+.inner-hero>div{position:relative;z-index:2}
+.inner-hero .page-hero-video{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;z-index:-1}
+
+
+/* KIN site-wide service marquee above the navigation */
+.kin-marquee{height:34px;display:flex;align-items:center;overflow:hidden;background:#123d5b;color:#fff;border-bottom:2px solid #8ed8f5;position:relative;z-index:40;white-space:nowrap}
+.kin-marquee-track{display:flex;align-items:center;gap:22px;width:max-content;min-width:max-content;padding-left:22px;animation:kin-marquee-scroll 42s linear infinite;font:800 10px/1 Arial,Helvetica,sans-serif;letter-spacing:1.35px}
+.kin-marquee-track i{font-style:normal;color:#8ed8f5;font-size:14px}
+@keyframes kin-marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.kin-marquee:hover .kin-marquee-track{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.kin-marquee-track{animation:none!important;justify-content:center;flex-wrap:wrap;white-space:normal}.kin-marquee{height:auto;min-height:34px;padding:7px 10px}}
+
+
+/* KIN account links: consistent slim and distinct styling across inner pages */
+.inner-nav .login-link{display:inline-flex;align-items:center;justify-content:center;min-height:0;padding:5px 7px;border:0;border-bottom:1px solid #238fc7;border-radius:0;background:transparent;color:#17658c;box-shadow:none;font-size:9px;font-weight:700;letter-spacing:1px;line-height:1;white-space:nowrap}
+.inner-nav .login-link:hover{background:transparent;border-color:#123d5b;color:#123d5b}
+.inner-nav .nav-button{display:inline-flex;align-items:center;justify-content:center;min-height:0;padding:6px 11px;border:1px solid #238fc7;border-radius:2px;background:#238fc7;color:#fff;box-shadow:none;font-size:9px;font-weight:800;letter-spacing:1px;line-height:1;white-space:nowrap}
+.inner-nav .nav-button:hover{background:#123d5b;border-color:#123d5b;color:#fff;box-shadow:none;transform:none}
+@media(max-width:780px){.inner-nav .login-link,.inner-nav .nav-button{width:fit-content;min-height:0;padding:7px 10px;align-self:flex-start}}
