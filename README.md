@@ -61,3 +61,17 @@ Row Level Security is enabled. Passwords are managed by Supabase Auth and are ne
 - Admin/staff property-management screens, listing photo upload/storage policies, document storage permissions, and full quotation/project management workflows still need implementation and testing.
 - Add a privacy notice and retention policy before collecting real client information. Confirm POPIA requirements and applicable building/electrical compliance.
 - Do not commit passwords, database credentials, service-role keys or private customer documents.
+
+## Agent portal (new)
+- Footer **Join as an agent** opens `agent-register.html`.
+- Agent applicants register with Supabase Auth and submit their agency details. Registration does not grant agent privileges automatically.
+- After identity/agency checks, approve the applicant in Supabase SQL Editor:
+  `update public.profiles set role = 'agent' where id = 'AUTH-USER-UUID';`
+  `update public.agent_applications set status = 'approved' where id = 'AUTH-USER-UUID';`
+- Approved agents sign in through `client-login.html` and are routed to `agent-dashboard.html`.
+- The agent dashboard supports sale/rental property submissions, price, address, suburb/city, bedrooms/bathrooms, description, features and image URLs.
+- Agent submissions are saved as `pending_review`. They are not public until Core Webber verifies and publishes them:
+  `update public.properties set status = 'published' where id = 'PROPERTY-UUID';`
+- Apply the additional database migration `supabase/migrations/002_agent_listings.sql` after the initial migration. It adds agent applications, ownership fields and Row Level Security policies.
+- Images are currently supplied as externally hosted image URLs; direct photo upload/storage is not included in this first version.
+- The live agent portal requires the real Supabase project URL/public key in `js/supabase-config.js`. The repository still contains placeholders, so registration and listings will not work live until configured.
