@@ -42,3 +42,11 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 @keyframes kin-marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .kin-marquee:hover .kin-marquee-track{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.kin-marquee-track{animation:none!important;justify-content:center;flex-wrap:wrap;white-space:normal}.kin-marquee{height:auto;min-height:34px;padding:7px 10px}}
+
+
+/* KIN account links: consistent slim and distinct styling across inner pages */
+.inner-nav .login-link{display:inline-flex;align-items:center;justify-content:center;min-height:0;padding:5px 7px;border:0;border-bottom:1px solid #238fc7;border-radius:0;background:transparent;color:#17658c;box-shadow:none;font-size:9px;font-weight:700;letter-spacing:1px;line-height:1;white-space:nowrap}
+.inner-nav .login-link:hover{background:transparent;border-color:#123d5b;color:#123d5b}
+.inner-nav .nav-button{display:inline-flex;align-items:center;justify-content:center;min-height:0;padding:6px 11px;border:1px solid #238fc7;border-radius:2px;background:#238fc7;color:#fff;box-shadow:none;font-size:9px;font-weight:800;letter-spacing:1px;line-height:1;white-space:nowrap}
+.inner-nav .nav-button:hover{background:#123d5b;border-color:#123d5b;color:#fff;box-shadow:none;transform:none}
+@media(max-width:780px){.inner-nav .login-link,.inner-nav .nav-button{width:fit-content;min-height:0;padding:7px 10px;align-self:flex-start}}
