@@ -101,3 +101,51 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 @media(max-width:780px){
   .nav-links .login-link{min-width:0;width:fit-content}
 }
+
+
+/* Refined slim account links: discreet login + standout create account */
+.nav-links .login-link,
+.nav-links .nav-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:25px;
+  padding:5px 10px;
+  border-radius:3px;
+  font-size:9px;
+  line-height:1;
+  letter-spacing:.8px;
+  white-space:nowrap;
+}
+.nav-links .login-link{
+  border:1px solid #9bcfe5;
+  background:rgba(255,255,255,.72);
+  color:#17658c;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.45);
+}
+.nav-links .login-link:hover{
+  background:#eaf7fc;
+  border-color:#238fc7;
+  color:#123d5b;
+}
+.nav-links .nav-button{
+  border:1px solid #17658c;
+  background:linear-gradient(110deg,#17658c,#238fc7);
+  color:#fff;
+  box-shadow:0 2px 7px rgba(18,61,91,.18);
+}
+.nav-links .nav-button:hover{
+  background:linear-gradient(110deg,#123d5b,#17658c);
+  box-shadow:0 4px 10px rgba(18,61,91,.24);
+  transform:translateY(-1px);
+}
+@media(max-width:780px){
+  .nav-links .login-link,
+  .nav-links .nav-button{
+    min-width:0;
+    width:fit-content;
+    min-height:25px;
+    padding:6px 10px;
+    align-self:flex-start;
+  }
+}
