@@ -202,3 +202,31 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 
 /* Center the contact-band headline */
 .contact-band h2{text-align:center;}
+
+
+/* Homepage hero photo carousel */
+.search-hero.video-hero .hero-carousel{position:absolute;inset:0;z-index:0;overflow:hidden}
+.search-hero.video-hero .hero-video.hero-slide{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;
+  opacity:0;transform:scale(1.035);transition:opacity 1s ease,transform 6s ease;
+}
+.search-hero.video-hero .hero-video.hero-slide.is-active{opacity:1;transform:scale(1)}
+.search-hero.video-hero:before{z-index:1}
+.video-hero .hero-inner,.video-hero .hero-foot{z-index:2}
+.hero-carousel-controls{
+  position:absolute;z-index:4;right:5.5%;bottom:55px;display:flex;align-items:center;gap:12px;
+  padding:7px 9px;border:1px solid rgba(255,255,255,.35);border-radius:30px;
+  background:rgba(12,43,61,.48);backdrop-filter:blur(8px)
+}
+.hero-carousel-arrow{
+  width:30px;height:30px;border:1px solid rgba(255,255,255,.65);border-radius:50%;
+  background:transparent;color:#fff;font-size:23px;line-height:1;cursor:pointer
+}
+.hero-carousel-arrow:hover{background:#fff;color:#123d5b}
+.hero-carousel-dots{display:flex;align-items:center;gap:7px}
+.hero-carousel-dot{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
+.hero-carousel-dot.is-active{width:19px;border-radius:8px;background:#fff}
+@media(max-width:780px){.hero-carousel-controls{right:6%;bottom:48px}}
+@media(prefers-reduced-motion:reduce){
+  .search-hero.video-hero .hero-video.hero-slide{transition:none;transform:none}
+}
