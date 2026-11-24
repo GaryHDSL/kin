@@ -90,3 +90,14 @@ img{width:80%;max-width:80%;height:auto;animation:cw-image-float 6s ease-in-out 
 @keyframes kin-marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .kin-marquee:hover .kin-marquee-track{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.kin-marquee-track{animation:none!important;justify-content:center;flex-wrap:wrap;white-space:normal}.kin-marquee{height:auto;min-height:34px;padding:7px 10px}}
+
+/* Extra-slim CLIENT LOGIN navigation link */
+.nav-links .login-link{
+  padding:4px 9px;
+  font-size:9px;
+  line-height:1.1;
+  font-weight:700;
+}
+@media(max-width:780px){
+  .nav-links .login-link{min-width:0;width:fit-content}
+}
