@@ -24,7 +24,23 @@
 <div class="kin-marquee" role="region" aria-label="Property and construction services"><div class="kin-marquee-track"><span>PACE 2 FIND PROPERTIES</span><i>•</i><span>PROPERTY SALES &amp; RENTALS</span><i>•</i><span>RENOVATIONS &amp; MAINTENANCE</span><i>•</i><span>BUILDING &amp; CIVIL ENGINEERING</span><i>•</i><span>ROADS &amp; INFRASTRUCTURE</span><i>•</i><span>FIND YOUR NEXT PROPERTY WITH CORE WEBBER</span><i>•</i><span>PACE 2 FIND PROPERTIES</span><i>•</i><span>PROPERTY SALES &amp; RENTALS</span><i>•</i><span>RENOVATIONS &amp; MAINTENANCE</span><i>•</i><span>BUILDING &amp; CIVIL ENGINEERING</span><i>•</i><span>ROADS &amp; INFRASTRUCTURE</span><i>•</i><span>FIND YOUR NEXT PROPERTY WITH CORE WEBBER</span></div></div>
 
 <main>
-  <section class="search-hero video-hero" id="buy"><img class="hero-video" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85" alt="Aerial video of a modern residential property" loading="eager" decoding="async">
+  <section class="search-hero video-hero" id="buy">
+    <div class="hero-carousel" aria-label="Featured property photos" aria-roledescription="carousel">
+      <img class="hero-video hero-slide is-active" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85" alt="Modern luxury home with landscaped garden" loading="eager" decoding="async">
+      <img class="hero-video hero-slide" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85" alt="Contemporary townhouse exterior" loading="lazy" decoding="async">
+      <img class="hero-video hero-slide" src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2000&q=85" alt="Bright modern home interior" loading="lazy" decoding="async">
+      <img class="hero-video hero-slide" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=85" alt="Elegant contemporary residential property" loading="lazy" decoding="async">
+    </div>
+    <div class="hero-carousel-controls" aria-label="Carousel controls">
+      <button class="hero-carousel-arrow" type="button" data-hero-prev aria-label="Previous photo">‹</button>
+      <div class="hero-carousel-dots">
+        <button type="button" class="hero-carousel-dot is-active" data-hero-slide="0" aria-label="Show photo 1" aria-current="true"></button>
+        <button type="button" class="hero-carousel-dot" data-hero-slide="1" aria-label="Show photo 2"></button>
+        <button type="button" class="hero-carousel-dot" data-hero-slide="2" aria-label="Show photo 3"></button>
+        <button type="button" class="hero-carousel-dot" data-hero-slide="3" aria-label="Show photo 4"></button>
+      </div>
+      <button class="hero-carousel-arrow" type="button" data-hero-next aria-label="Next photo">›</button>
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-inner">
       <p class="eyebrow">FIND YOUR NEXT PLACE WITH CORE WEBBER</p>
@@ -96,7 +112,46 @@
   <section class="contact-band" id="contact"><div><p class="eyebrow">LET'S GET STARTED</p><h2>What can we help you find<br>or bring to life?</h2></div><div><p>Contact Core Webber for property enquiries, renovation assessments and small construction quotations.</p><a href="contact.html" class="light-button">SEND AN ENQUIRY ↗</a></div></section>
 </main>
 <footer class="footer"><span class="domain-notice"><img src="assets/core-webber-logo.png.png" alt="Core Webber logo" style="height:24px;width:auto;vertical-align:middle;margin-right:8px">Private domain for Core Webber Pty Ltd.</span><a class="brand" href="index.html"><img class="site-logo" src="assets/logo.png" alt="Pace 2 Find Properties logo"></a><span>© <span id="year"></span> Pace 2 Find Properties</span><div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="client-login.html">Client login</a><a href="client-register.html">Register</a><a href="agent-register.html">Join as an agent</a></div></footer>
-<script type="module" src="js/property-search.js"></script>
+
+<script>
+(() => {
+  const carousel = document.querySelector('.hero-carousel');
+  if (!carousel) return;
+  const slides = [...carousel.querySelectorAll('.hero-slide')];
+  const dots = [...document.querySelectorAll('.hero-carousel-dot')];
+  let active = 0;
+  let timer;
+  const show = (index) => {
+    active = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === active);
+      slide.setAttribute('aria-hidden', i === active ? 'false' : 'true');
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === active);
+      if (i === active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+  };
+  const stop = () => window.clearInterval(timer);
+  const start = () => {
+    stop();
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      timer = window.setInterval(() => show(active + 1), 5000);
+    }
+  };
+  document.querySelector('[data-hero-prev]')?.addEventListener('click', () => { show(active - 1); start(); });
+  document.querySelector('[data-hero-next]')?.addEventListener('click', () => { show(active + 1); start(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); start(); }));
+  carousel.addEventListener('mouseenter', stop);
+  carousel.addEventListener('mouseleave', start);
+  carousel.addEventListener('focusin', stop);
+  carousel.addEventListener('focusout', start);
+  show(0);
+  start();
+})();
+</script>
+\n<script type="module" src="js/property-search.js"></script>
 
 </body>
 </html>
