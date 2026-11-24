@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /client-login.html
+Disallow: /client-register.html
+Disallow: /client-dashboard.html
+Disallow: /agent-dashboard.html
+Disallow: /agent-register.html
+Disallow: /reset-password.html
+Disallow: /update-password.html
+
+Sitemap: https://property.zurilogisticsgroup.co.za/sitemap.xml
