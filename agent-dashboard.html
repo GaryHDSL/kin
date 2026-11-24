@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agent Dashboard | Core Webber</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="portal.css"><link rel="icon" href="assets/logo.png"></head>
+<body class="dashboard-page"><header class="site-header"><a class="brand" href="index.html"><img class="site-logo" src="assets/logo.png" alt="Core Webber"></a><div class="dash-header-actions"><a class="back-link" href="index.html">Website</a><button id="signOutBtn" class="signout-btn">Sign out</button></div></header>
+<main class="dashboard"><div class="dashboard-heading"><div><div class="section-label">AGENT PARTNER PORTAL</div><h1 id="welcome">Agent dashboard</h1><p>Submit properties and track listing review and publication status.</p></div><span class="account-pill" id="accountEmail"></span></div>
+<div class="agent-stats"><div><strong id="totalCount">—</strong><span>MY LISTINGS</span></div><div><strong id="reviewCount">—</strong><span>UNDER REVIEW</span></div><div><strong id="publishedCount">—</strong><span>PUBLISHED</span></div></div>
+<div class="dashboard-grid agent-grid"><section class="dash-panel"><div class="panel-heading"><div><span class="section-label">NEW PROPERTY</span><h2>Post a property</h2></div></div>
+<form id="listingForm" class="request-form">
+<label>Listing title<input name="title" required maxlength="120" placeholder="e.g. Three-bedroom family home"></label>
+<label>Listing type<select name="listing_type" required><option value="sale">For sale</option><option value="rent">To rent</option></select></label>
+<label>Property type<select name="property_type" required><option value="house">House</option><option value="apartment">Apartment</option><option value="townhouse">Townhouse</option><option value="vacant_land">Vacant land</option><option value="commercial">Commercial</option><option value="farm">Farm</option></select></label>
+<label>Price (ZAR)<input name="price" type="number" min="1" step="0.01" required placeholder="e.g. 1850000"></label>
+<label>Street address<input name="address" required placeholder="Street address"></label>
+<label>Suburb<input name="suburb" required></label><label>City<input name="city" required></label>
+<div class="agent-form-row"><label>Bedrooms<input name="bedrooms" type="number" min="0" max="50"></label><label>Bathrooms<input name="bathrooms" type="number" min="0" max="50" step="0.5"></label></div>
+<label>Property description<textarea name="description" rows="5" required placeholder="Describe the property, features and nearby amenities."></textarea></label>
+<label>Photo URLs <span class="muted">(one image URL per line)</span><textarea name="image_urls" rows="3" placeholder="https://..."></textarea></label>
+<label>Features <span class="muted">(separate with commas)</span><input name="features" placeholder="Garden, garage, swimming pool"></label>
+<button class="btn btn-accent" type="submit">Submit listing for review ↗</button><div class="form-message" id="listingMessage" role="status"></div>
+</form></section>
+<section class="dash-panel"><div class="panel-heading"><div><span class="section-label">YOUR PROPERTY INVENTORY</span><h2>My listings</h2></div></div><div id="agentListings" class="record-list"><p class="muted">Loading your listings…</p></div><p class="dashboard-note">New listings are saved as pending review. Core Webber must verify the details and approve a listing before it appears publicly.</p></section></div></main>
+<script type="module" src="js/agent-dashboard.js"></script></body></html>
